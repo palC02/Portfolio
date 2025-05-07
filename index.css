@@ -630,7 +630,60 @@ footer h3{
     padding-bottom: 20px;
 }
 
-/* Responsive CSS for Mobile Devices */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    position: relative;
+    margin-left: auto;
+    z-index: 100;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+    top: 9px;
+}
+
+.hamburger span:nth-child(4) {
+    top: 18px;
+}
+
+.hamburger.open span:nth-child(1) {
+    top: 9px;
+    width: 0%;
+    left: 50%;
+}
+
+.hamburger.open span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.hamburger.open span:nth-child(4) {
+    top: 9px;
+    width: 0%;
+    left: 50%;
+}
 
 /* Mobile Navigation */
 @media screen and (max-width: 768px) {
@@ -639,16 +692,38 @@ footer h3{
         padding: 15px;
     }
     
+    /* Show hamburger menu */
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    
+    #navigation {
+        width: 100%;
+    }
+    
     #navigation ul {
         flex-direction: column;
         align-items: center;
         gap: 15px;
         margin-top: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    
+    #navigation.active ul {
+        max-height: 300px; /* Adjust based on your menu items */
     }
     
     #navigation a {
         font-size: 16px;
         padding: 8px 15px;
+        display: block;
+        width: 100%;
+        text-align: center;
     }
     
     .logo img {
