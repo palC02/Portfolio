@@ -93,3 +93,23 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger-menu');
+  const nav = document.getElementById('navigation');
+  
+  hamburger.addEventListener('click', function() {
+      this.classList.toggle('open');
+      nav.classList.toggle('active');
+  });
+  
+  // Close mobile menu when clicking on a nav link
+  const navLinks = document.querySelectorAll('#navigation a');
+  navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+          hamburger.classList.remove('open');
+          nav.classList.remove('active');
+      });
+  });
+});
